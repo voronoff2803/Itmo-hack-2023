@@ -41,12 +41,7 @@ class OkHttpActivity : AppCompatActivity() {
 
     @Throws(IOException::class)
     fun run(url: String): String? {
-        val interceptor = OkHttpInterceptor(object : OkHttpInterceptor.RequestInterceptor {
-            override fun interceptRequest(request: Request): Request {
-                // перехватываем запрос и возвращаем новый запрос, если нужно
-                return request
-            }
-        })
+        val interceptor = OkHttpInterceptor()
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
             .build()

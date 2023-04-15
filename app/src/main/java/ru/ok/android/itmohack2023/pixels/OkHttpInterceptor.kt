@@ -6,16 +6,34 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class OkHttpInterceptor(private val interceptor: RequestInterceptor) : Interceptor {
-
-    interface RequestInterceptor {
-        fun interceptRequest(request: Request): Request
-    }
-
+class OkHttpInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val originalRequest = chain.request()
-        Log.d("Tag", originalRequest.toString())
-        val interceptedRequest = interceptor.interceptRequest(originalRequest)
-        return chain.proceed(interceptedRequest)
+        // Get the request
+        val request = chain.request()
+        val requestBody = request.body
+
+        // Analyze the request
+        Log.d("OkHttp Request", "Url: ${request.url}")
+        Log.d("OkHttp Request", "Method: ${request.method}")
+        Log.d("OkHttp Request", "Body: ${requestBody?.toString()?.length}")
+
+        val exception = Exception()
+        val stackTrace = exception.stackTrace
+
+        for (i in stackTrace) {
+            Log.d("OkHttp Request", "callerClassName: ${i.className}")
+            Log.d("OkHttp Request", "callerMethodName: ${i.methodName}")
+        }
+
+        // Get the response
+        val response = chain.proceed(request)
+        val responseBody = response.body
+
+        // Analyze the response
+        Log.d("OkHttp Response", "Url: ${request.url}")
+        Log.d("OkHttp Response", "Status code: ${response.code}")
+        Log.d("OkHttp Response", "Body: ${responseBody?.toString()?.length}")
+
+        return response
     }
 }
