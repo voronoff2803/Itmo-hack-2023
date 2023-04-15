@@ -34,20 +34,6 @@ class FrescoActivity : AppCompatActivity() {
     }
 
     private fun getAnimal() {
-        val context = this
-
-        val logging = OkHttpInterceptor()
-
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
-
-        val config = OkHttpImagePipelineConfigFactory
-            .newBuilder(context, okHttpClient)
-            .build()
-
-        Fresco.initialize(context, config)
-
         val animal = SAMPLE_URIS_PNG[position]
         val request = ImageRequestBuilder
             .newBuilderWithSource(Uri.parse(animal))
