@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
+import ru.ok.android.itmohack2023.pixels.OkHttpInterceptor
 import java.io.IOException
 
 class OkHttpActivity : AppCompatActivity() {
