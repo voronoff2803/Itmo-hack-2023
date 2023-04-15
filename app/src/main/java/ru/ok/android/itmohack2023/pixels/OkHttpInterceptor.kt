@@ -21,8 +21,8 @@ class OkHttpInterceptor : Interceptor {
         val stackTrace = exception.stackTrace
 
         for (i in stackTrace) {
-            Log.d("OkHttp Request", "callerClassName: ${i.className}")
-            Log.d("OkHttp Request", "callerMethodName: ${i.methodName}")
+            Log.d("OkHttp Request", i.className)
+            Log.d("OkHttp Request", i.methodName)
         }
 
         // Get the response
