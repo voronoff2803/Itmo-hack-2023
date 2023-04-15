@@ -16,16 +16,9 @@ object RetrofitProvider {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        val interceptor = OkHttpInterceptor(object : OkHttpInterceptor.RequestInterceptor {
-            override fun interceptRequest(request: Request): Request {
-                // перехватываем запрос и возвращаем новый запрос, если нужно
-                return request
-            }
-        })
-
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(interceptor)
+            .addInterceptor(OkHttpInterceptor())
             .connectTimeout(5, TimeUnit.SECONDS)
             .build()
         val gson = GsonBuilder()

@@ -6,16 +6,18 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class OkHttpInterceptor(private val interceptor: RequestInterceptor) : Interceptor {
+class OkHttpInterceptor() : Interceptor {
 
-    interface RequestInterceptor {
-        fun interceptRequest(request: Request): Request
+
+    fun interceptRequest(request: Request): Request {
+        Log.d("OKHTTP REQUEST", request.toString())
+        return request
     }
+
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        Log.d("Tag", originalRequest.toString())
-        val interceptedRequest = interceptor.interceptRequest(originalRequest)
+        val interceptedRequest = interceptRequest(originalRequest)
         return chain.proceed(interceptedRequest)
     }
 }
