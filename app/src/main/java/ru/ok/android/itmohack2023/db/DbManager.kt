@@ -13,8 +13,9 @@ class DbManager(context: Context) {
         db = dbHelper.writableDatabase
     }
 
-    fun insertToDb (title: String, content: String){
+    fun insertToDb (time: String, title: String, content: String){
         val values = ContentValues().apply {
+            put(DbNameClass.COLUMN_NAME_TIME, time)
             put(DbNameClass.COLUMN_NAME_TITLE, title)
             put(DbNameClass.COLUMN_NAME_CONTENT, content)
         }

@@ -7,6 +7,9 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ru.ok.android.itmohack2023.db.DbManager
+import ru.ok.android.itmohack2023.db.DbSheduleSaver
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,19 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val mainHandler = Handler(Looper.getMainLooper())
+        val dbSheduleSaver = DbSheduleSaver (this)
 
-        mainHandler.post(object : Runnable {
-            override fun run() {
-                dbNewInfoSave()
-                mainHandler.postDelayed(this, 60000 )
-            }
-        })
     }
 
-    fun dbNewInfoSave (){
-        var dbManager = DbManager(this);
-        dbManager.openDb();
-        dbManager.insertToDb("Title N", "saving by shadule")
-    }
 }

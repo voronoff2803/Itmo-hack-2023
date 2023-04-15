@@ -6,6 +6,7 @@ object DbNameClass : BaseColumns {
     const val TABLE_NAME = "traffic"
     const val COLUMN_NAME_TITLE = "title"
     const val COLUMN_NAME_CONTENT = "subtitle"
+    const val COLUMN_NAME_TIME = "time"
     const val DATABASE_VERSION = 1
     const val DATABASE_NAME = "Pixels.db"
 
@@ -15,6 +16,7 @@ object DbNameClass : BaseColumns {
     const val SQL_CREATE_ENTRIES =
         "CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (" +
                 "${BaseColumns._ID} INTEGER PRIMARY KEY," +
+                "${COLUMN_NAME_TIME} TEXT," +
                 "${COLUMN_NAME_TITLE} TEXT," +
                 "${COLUMN_NAME_CONTENT} TEXT)"
 
