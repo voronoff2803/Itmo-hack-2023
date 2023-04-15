@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import ru.ok.android.itmohack2023.db.DbManager
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,5 +46,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.downloadmanager).setOnClickListener {
             startActivity(Intent(this, DownloadManagerActivity::class.java))
         }
+        var dbManager = DbManager(this);
+        dbManager.openDb();
+        dbManager.insertToDb("Title2", "SomeText")
+
     }
 }
