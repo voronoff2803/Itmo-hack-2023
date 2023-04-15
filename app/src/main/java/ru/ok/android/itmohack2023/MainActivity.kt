@@ -2,6 +2,8 @@ package ru.ok.android.itmohack2023
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ru.ok.android.itmohack2023.db.DbManager
@@ -46,9 +48,21 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.downloadmanager).setOnClickListener {
             startActivity(Intent(this, DownloadManagerActivity::class.java))
         }
+
+
+        val mainHandler = Handler(Looper.getMainLooper())
+
+        mainHandler.post(object : Runnable {
+            override fun run() {
+                dbNewInfoSave()
+                mainHandler.postDelayed(this, 60000 )
+            }
+        })
+    }
+
+    fun dbNewInfoSave (){
         var dbManager = DbManager(this);
         dbManager.openDb();
-        dbManager.insertToDb("Title2", "SomeText")
-
+        dbManager.insertToDb("Title N", "saving by shadule")
     }
 }
