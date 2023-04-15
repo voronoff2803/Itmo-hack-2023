@@ -15,7 +15,7 @@ object DbNameClass : BaseColumns {
     const val COLUMN_NAME_TYPE = "type"
     const val COLUMN_NAME_REQUESTTIME = "requestTime"
     const val COLUMN_NAME_REQUESTSIZE= "requestSize"
-    const val COLUMN_NAME_RESPONSESIZE= "responcesize"
+    const val COLUMN_NAME_RESPONSESIZE= "responceSize"
     const val COLUMN_NAME_STATUSCODE= "statusCode"
     const val COLUMN_NAME_METHODNAME= "methodName"
     const val COLUMN_NAME_CLASSNAME= "className"
@@ -23,9 +23,6 @@ object DbNameClass : BaseColumns {
 
     const val DATABASE_VERSION = 1
     const val DATABASE_NAME = "Pixels.db"
-
-    //const val CREAT_TABLE = "CREATE TABLE IF NOT EXISTS $TABLE_NAME (" +
-    //        "${BaseColumns._ID} INTEGER PRIMARY KEY,$COLUMN_NAME_TITLE TEXT,$COLUMN_NAME_CONTENT TEXT)"
 
     const val SQL_CREATE_ENTRIES =
         "CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (" +

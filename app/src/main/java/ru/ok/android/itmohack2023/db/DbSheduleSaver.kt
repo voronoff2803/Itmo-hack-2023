@@ -9,6 +9,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ru.ok.android.itmohack2023.db.DbManager
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.Date
 
 
@@ -31,21 +32,22 @@ class DbSheduleSaver(_context: Context) {
         dbManager.openDb();
 
 
-        val tmp = DbModel(
-            userID = "Inspector",
-            client = "Client 1",
-            path = "/api/v1/user",
-            headers = "Accept: application/json",
-            type = "GET",
-            requestSize = 256,
-            statusCode = 200,
-            methodName = "getUser",
-            className = "UserController",
-            other = "additional information",
-            responseSize = 5
-        )
-
-        dbManager.insertToDb(tmp)
+//        val tmp = DbModel(
+//            userID = "Inspector",
+//            client = "Client 1",
+//            time = LocalDate.now(),
+//            path = "/api/v1/user",
+//            headers = "Accept: application/json",
+//            type = "GET",
+//            requestSize = 256,
+//            statusCode = 200,
+//            methodName = "getUser",
+//            className = "UserController",
+//            other = "additional information",
+//            responseSize = 5
+//        )
+//
+//        dbManager.insertToDb(tmp)
     }
 
 }
