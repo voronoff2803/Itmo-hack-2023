@@ -7,7 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.ok.android.itmohack2023.pixels.OkHttpInterceptor
+import ru.ok.android.itmohack2023.OkHttpInterceptor
 import java.util.concurrent.TimeUnit
 
 object RetrofitProvider {

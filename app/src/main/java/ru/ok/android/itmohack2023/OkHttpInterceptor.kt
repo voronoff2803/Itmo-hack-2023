@@ -1,4 +1,4 @@
-package ru.ok.android.itmohack2023.pixels
+package ru.ok.android.itmohack2023
 //package com.example.okhttpinterceptor
 
 import android.util.Log
