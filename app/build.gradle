@@ -69,13 +69,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation 'com.github.burgstaller:okhttp-basic-auth:1.35.0'
-    implementation 'com.otaliastudios:webkit:2.9.7'
-    implementation 'com.otaliastudios:zoomlayout:1.7.0'
-    implementation 'com.stfalcon:websocket-client:1.2.2'
-    implementation 'com.github.javiersantos:CookieManager:1.0.2'
-    implementation 'com.github.gotev:okhttp-post-body-replace:1.0.6'
-    implementation 'com.github.gotev:speech:1.4.0'
-    implementation 'com.github.gotev:android-webview-intercept:1.2.0'
-
 }
