@@ -2,10 +2,12 @@ package ru.ok.android.itmohack2023.retrofit
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.ok.android.itmohack2023.OkHttpInterceptor
 import java.util.concurrent.TimeUnit
 
 object RetrofitProvider {
@@ -13,8 +15,17 @@ object RetrofitProvider {
     val retrofit: Retrofit by lazy {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+        val interceptor = OkHttpInterceptor(object : OkHttpInterceptor.RequestInterceptor {
+            override fun interceptRequest(request: Request): Request {
+                // перехватываем запрос и возвращаем новый запрос, если нужно
+                return request
+            }
+        })
+
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(interceptor)
             .connectTimeout(5, TimeUnit.SECONDS)
             .build()
         val gson = GsonBuilder()
