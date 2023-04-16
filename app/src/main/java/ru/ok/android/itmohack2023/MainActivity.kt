@@ -2,8 +2,16 @@ package ru.ok.android.itmohack2023
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import ru.ok.android.itmohack2023.db.DbManager
+import ru.ok.android.itmohack2023.db.DbModel
+import ru.ok.android.itmohack2023.db.DbSheduleSaver
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,5 +53,40 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.downloadmanager).setOnClickListener {
             startActivity(Intent(this, DownloadManagerActivity::class.java))
         }
+
+//        val tmp = DbModel(
+//            userID = "Inspector",
+//            client = "Client 1",
+//            path = "/api/v1/user",
+//            headers = "Accept: application/json",
+//            type = "GET",
+//            requestSize = 256,
+//            statusCode = 200,
+//            methodName = "getUser",
+//            className = "UserController",
+//            other = "additional information",
+//            responseSize = 5
+//        )
+//
+//        Log.d("DbModel", "userID: ${tmp.userID}")
+//        Log.d("DbModel", "time: ${tmp.time}")
+//        Log.d("DbModel", "client: ${tmp.client}")
+//        Log.d("DbModel", "path: ${tmp.path}")
+//        Log.d("DbModel", "headers: ${tmp.headers}")
+//        Log.d("DbModel", "type: ${tmp.type}")
+//        Log.d("DbModel", "requestTime: ${tmp.requestTime}")
+//        Log.d("DbModel", "requestSize: ${tmp.requestSize}")
+//        Log.d("DbModel", "responseSize: ${tmp.responseSize}")
+//        Log.d("DbModel", "statusCode: ${tmp.statusCode}")
+//        Log.d("DbModel", "methodName: ${tmp.methodName}")
+//        Log.d("DbModel", "className: ${tmp.className}")
+//        Log.d("DbModel", "other: ${tmp.other}")
+
+
+        val dbSheduleSaver = DbSheduleSaver (this)
+        //dbSheduleSaver.sendPostRequest();
+        dbSheduleSaver.postOkRequest();
+
     }
+
 }
