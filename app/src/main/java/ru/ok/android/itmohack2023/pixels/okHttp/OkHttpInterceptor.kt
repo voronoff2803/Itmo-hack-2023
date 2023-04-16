@@ -43,18 +43,17 @@ class OkHttpInterceptor : Interceptor {
         Log.d("OkHttp Response", "Body: ${responseBody?.toString()?.length}")
         Log.d("OkHttp Response", "Time: ${time}")
 
-//        val app = ApplicationId()
-//        val androidId = app.getAndroidId()
-
         val modelInstance = DbModel(
             userID = DbSingletone.userId,
+            time = time.toString(),
+            client = "OkHttp",
             path = request.url.toString(),
             type = request.method,
             requestSize = requestBody.toString().length.toString(),
+            responseSize = responseBody.toString().length.toString(),
             className = stackTrace[4].className,
             methodName = stackTrace[4].methodName,
             statusCode = response.code.toString(),
-            responseSize = responseBody.toString().length.toString()
         )
 
         val tmpDb = DbManager (DbSingletone.context)
