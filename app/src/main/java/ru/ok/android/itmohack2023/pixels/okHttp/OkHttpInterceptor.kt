@@ -1,14 +1,13 @@
-package ru.ok.android.itmohack2023.pixels
+package ru.ok.android.itmohack2023.pixels.okHttp
 //package com.example.okhttpinterceptor
 
-import android.annotation.SuppressLint
 import android.util.Log
 import okhttp3.Interceptor
 import okhttp3.Response
 import ru.ok.android.itmohack2023.db.DbManager
 import ru.ok.android.itmohack2023.db.DbModel
-import ru.ok.android.itmohack2023.db.DbSheduleSaver
 import ru.ok.android.itmohack2023.db.DbSingletone
+import ru.ok.android.itmohack2023.pixels.MeasurementService
 
 class OkHttpInterceptor : Interceptor {
 
@@ -25,6 +24,8 @@ class OkHttpInterceptor : Interceptor {
         val exception = Exception()
         val stackTrace = exception.stackTrace
 
+        val id = MeasurementService.start()
+
         for (i in stackTrace) {
             Log.d("OkHttp Request", i.className)
             Log.d("OkHttp Request", i.methodName)
@@ -34,10 +35,13 @@ class OkHttpInterceptor : Interceptor {
         val response = chain.proceed(request)
         val responseBody = response.body
 
+        val time = MeasurementService.end(id)
+
         // Analyze the response
         Log.d("OkHttp Response", "Url: ${response.request.url}")
         Log.d("OkHttp Response", "Status code: ${response.code}")
-        Log.d("OkHttp ResponseWWW", "Body: ${responseBody?.toString()?.length}")
+        Log.d("OkHttp Response", "Body: ${responseBody?.toString()?.length}")
+        Log.d("OkHttp Response", "Time: ${time}")
 
 //        val app = ApplicationId()
 //        val androidId = app.getAndroidId()

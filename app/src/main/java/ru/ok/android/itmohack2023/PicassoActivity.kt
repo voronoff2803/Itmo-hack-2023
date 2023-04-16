@@ -3,11 +3,10 @@ package ru.ok.android.itmohack2023
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
-import ru.ok.android.itmohack2023.pixels.OkHttpInterceptor
+import ru.ok.android.itmohack2023.pixels.okHttp.OkHttpInterceptor
 
 class PicassoActivity : AppCompatActivity() {
     private lateinit var dog1: ImageView
