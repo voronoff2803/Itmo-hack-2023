@@ -20,14 +20,8 @@ class PixelsWebViewClient(private val webView: WebView,
         val exception = Exception()
         val stackTrace = exception.stackTrace
 
-        val id = MeasurementService.start()
-
-
-        val time = MeasurementService.end(id)
-
         val modelInstance = DbModel(
             userID = DbSingletone.userId,
-            time = time.toString(),
             client = "WebView",
             path = webViewRequest.url,
             type = webViewRequest.method,
