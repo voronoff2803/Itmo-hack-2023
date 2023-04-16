@@ -23,6 +23,7 @@ class DbSheduleSaver(_context: Context) {
     val context : Context = _context
 
     init{
+        DbSingletone.initValue(_context)
         val mainHandler = Handler(Looper.getMainLooper())
 
         mainHandler.post(object : Runnable {

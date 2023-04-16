@@ -3,9 +3,14 @@ package ru.ok.android.itmohack2023
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.view.SimpleDraweeView
+import com.facebook.imagepipeline.core.ImagePipelineConfig
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import com.google.android.material.button.MaterialButton
+import okhttp3.OkHttpClient
+import ru.ok.android.itmohack2023.pixels.OkHttpInterceptor
+//import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory
 
 class FrescoActivity : AppCompatActivity() {
 

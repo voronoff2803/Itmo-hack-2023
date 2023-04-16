@@ -19,7 +19,7 @@ class DbManager(context: Context) {
 
     fun insertToDb (dbModel: DbModel){
 
-
+        val tm = dbModel
 
         val values = ContentValues().apply {
             put(DbNameClass.COLUMN_NAME_USERID, dbModel.userID)

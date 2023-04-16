@@ -12,7 +12,6 @@ import ru.ok.android.itmohack2023.db.DbSingletone
 
 class OkHttpInterceptor : Interceptor {
 
-    @SuppressLint("HardwareIds")
     override fun intercept(chain: Interceptor.Chain): Response {
         // Get the request
         val request = chain.request()
@@ -38,12 +37,12 @@ class OkHttpInterceptor : Interceptor {
         // Analyze the response
         Log.d("OkHttp Response", "Url: ${response.request.url}")
         Log.d("OkHttp Response", "Status code: ${response.code}")
-        Log.d("OkHttp Response", "Body: ${responseBody?.toString()?.length}")
+        Log.d("OkHttp ResponseWWW", "Body: ${responseBody?.toString()?.length}")
 
         val app = ApplicationId()
-        val androidId = app.getAndroidId()
+//        val androidId = app.getAndroidId()
 
-        val modelInstance = DbModel(userID = androidId.toString(),
+        val modelInstance = DbModel(userID = "367376",
             path = request.url.toString(),
             type = request.method,
             requestSize = requestBody.toString().length.toString(),
