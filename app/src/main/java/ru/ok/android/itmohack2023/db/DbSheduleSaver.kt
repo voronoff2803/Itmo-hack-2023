@@ -5,6 +5,7 @@ import android.os.Build
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.annotation.RequiresApi
 
 import ru.ok.android.itmohack2023.jsonparser.JsonParser
@@ -81,7 +82,7 @@ class DbSheduleSaver(_context: Context) {
             .jsonBody(json.toString())
             .response()
 
-        println(response.statusCode)
+        Log.d("tag", response.statusCode.toString())
     }
 
 }
