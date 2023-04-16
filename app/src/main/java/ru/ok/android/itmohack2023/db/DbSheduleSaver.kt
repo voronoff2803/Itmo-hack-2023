@@ -42,7 +42,7 @@ class DbSheduleSaver(_context: Context) {
         mainHandler.post(object : Runnable {
             override fun run() {
 
-                dbNewInfoSave()
+                postOkRequest();
 
                 mainHandler.postDelayed(this, 120000 )
             }
