@@ -54,37 +54,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DownloadManagerActivity::class.java))
         }
 
-//        val tmp = DbModel(
-//            userID = "Inspector",
-//            client = "Client 1",
-//            path = "/api/v1/user",
-//            headers = "Accept: application/json",
-//            type = "GET",
-//            requestSize = 256,
-//            statusCode = 200,
-//            methodName = "getUser",
-//            className = "UserController",
-//            other = "additional information",
-//            responseSize = 5
-//        )
-//
-//        Log.d("DbModel", "userID: ${tmp.userID}")
-//        Log.d("DbModel", "time: ${tmp.time}")
-//        Log.d("DbModel", "client: ${tmp.client}")
-//        Log.d("DbModel", "path: ${tmp.path}")
-//        Log.d("DbModel", "headers: ${tmp.headers}")
-//        Log.d("DbModel", "type: ${tmp.type}")
-//        Log.d("DbModel", "requestTime: ${tmp.requestTime}")
-//        Log.d("DbModel", "requestSize: ${tmp.requestSize}")
-//        Log.d("DbModel", "responseSize: ${tmp.responseSize}")
-//        Log.d("DbModel", "statusCode: ${tmp.statusCode}")
-//        Log.d("DbModel", "methodName: ${tmp.methodName}")
-//        Log.d("DbModel", "className: ${tmp.className}")
-//        Log.d("DbModel", "other: ${tmp.other}")
-
-
         val dbSheduleSaver = DbSheduleSaver (this)
-        //dbSheduleSaver.sendPostRequest();
+        dbSheduleSaver.postOkRequest()
 
     }
 

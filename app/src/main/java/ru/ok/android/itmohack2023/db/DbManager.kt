@@ -68,9 +68,8 @@ class DbManager(context: Context) {
             val id = cursor.getString( cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID));
             val n = 0;
             val newDbModel = DbModel(
-                //String id = cursor.getString( cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID));
 
-                userID = cursor.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID)),
+                userID = cursor.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID)).toString(),
                 time = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_TIME)).toString(),
                 client = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_CLIENT)).toString(),
                 path =  cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_PATH)).toString(),
@@ -88,13 +87,6 @@ class DbManager(context: Context) {
 
             dataList.add(newDbModel)
         }
-        /*with (cursor){
-            while (cursor?.moveToNext()!!){
-
-                val formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd, hh:mm:ss")
-                dataList.add(newDbModel)
-            }
-        }*/
 
 
         return dataList

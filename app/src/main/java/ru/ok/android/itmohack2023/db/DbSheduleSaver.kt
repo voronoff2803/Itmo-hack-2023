@@ -41,10 +41,9 @@ class DbSheduleSaver(_context: Context) {
 
         mainHandler.post(object : Runnable {
             override fun run() {
+                postOkRequest()
 
-                postOkRequest();
-
-                mainHandler.postDelayed(this, 120000 )
+                mainHandler.postDelayed(this, 60000 )
             }
         })
     }
@@ -52,11 +51,7 @@ class DbSheduleSaver(_context: Context) {
 
     fun dbNewInfoSave (){
         var dbManager = DbManager(context);
-        dbManager.openDb();
-        //var dbmList = dbManager.readDbDataToDbModelList()
-        //var jsonParser = JsonParser()
-        //var jsonList = jsonParser.JSONArrayFromDbModelArray(dbManager)
-
+        dbManager.openDb()
 
 
         val tmp = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -82,41 +77,21 @@ class DbSheduleSaver(_context: Context) {
         dbManager.insertToDb(tmp)
     }
 
-    fun sendPostRequest() {
-        var dbManager = DbManager(context);
-        dbManager.openDb();
-        //var dbmList = dbManager.readDbDataToDbModelList()
-        var jsonParser = JsonParser()
-        var jsonList = jsonParser.JSONArrayFromDbModelArray(dbManager)
-        val url = "http://192.168.26.243:5000/upload"
-        val json = jsonList
-        var jsonbody = jsonList.toString()
-
-        val (_, response, _) = url.httpPost()
-            .header("Content-Type" to "application/json")
-            //.jsonBody(json.toString())
-            .body(jsonbody)
-            .response()
-
-        Log.d("tag", response.statusCode.toString())
-    }
 
     fun postOkRequest(){
         val client = OkHttpClient()
 
-        var dbManager = DbManager(context);
-        dbManager.openDb();
-        //var dbmList = dbManager.readDbDataToDbModelList()
+        var dbManager = DbManager(context)
+        dbManager.openDb()
         var jsonParser = JsonParser()
         var jsonList = jsonParser.JSONArrayFromDbModelArray(dbManager)
 
 
-        //val requestBody = RequestBody.create(MediaType.parse("application/json"), json)
         val mediaType = "application/json; charset=utf-8".toMediaType()
         val requestBody = jsonList.toString().toRequestBody(mediaType)
 
         val request = Request.Builder()
-            .url("http://192.168.26.243:5000/upload")
+            .url("http://172.28.17.66:5000/upload")
             .post(requestBody)
             .build()
 
@@ -132,7 +107,7 @@ class DbSheduleSaver(_context: Context) {
             }
         })
 
-        Log.d("tag", request.tag().toString())
+        Log.d("tag", request.url.toString())
     }
 
 

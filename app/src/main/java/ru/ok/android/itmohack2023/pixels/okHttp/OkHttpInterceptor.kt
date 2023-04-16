@@ -12,7 +12,6 @@ import ru.ok.android.itmohack2023.pixels.MeasurementService
 class OkHttpInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        // Get the request
         val request = chain.request()
         val requestBody = request.body
 
@@ -21,7 +20,6 @@ class OkHttpInterceptor : Interceptor {
 
         val id = MeasurementService.start()
 
-        // Get the response
         val response = chain.proceed(request)
         val responseBody = response.body
 

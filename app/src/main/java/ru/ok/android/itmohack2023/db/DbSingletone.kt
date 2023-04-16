@@ -15,8 +15,5 @@ object DbSingletone {
 
         userId = MeasurementService.getDeviceId(context_)
     }
-//    fun getContext() : Context {
-//        return context
-//    }
 
 }
