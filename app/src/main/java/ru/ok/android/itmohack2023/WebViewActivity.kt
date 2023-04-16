@@ -2,12 +2,9 @@ package ru.ok.android.itmohack2023
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
-import com.acsbendi.requestinspectorwebview.RequestInspectorWebViewClient
-import com.acsbendi.requestinspectorwebview.WebViewRequest
-import ru.ok.android.itmohack2023.pixels.PixelsWebViewClient
+import ru.ok.android.itmohack2023.pixels.webview.PixelsWebViewClient
 
 
 class WebViewActivity : AppCompatActivity() {
