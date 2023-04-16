@@ -10,7 +10,7 @@ class JsonParser {
         var originList = dbManager.readDbDataToDbModelList();
         for (dbm in originList){
             val jsonA = JSONObject()
-            jsonA.put("userId", dbm.userID)
+            jsonA.put("userID", dbm.userID)
             jsonA.put("time", dbm.time)
             jsonA.put("client", dbm.client)
             jsonA.put("path", dbm.path)
@@ -18,7 +18,7 @@ class JsonParser {
             jsonA.put("type", dbm.type)
             jsonA.put("requestTime", dbm.requestTime)
             jsonA.put("requestSize", dbm.requestSize)
-            jsonA.put("responceSize", dbm.responseSize)
+            jsonA.put("responseSize", dbm.responseSize)
             jsonA.put("statusCode", dbm.statusCode)
             jsonA.put("methodName", dbm.methodName)
             jsonA.put("className", dbm.className)

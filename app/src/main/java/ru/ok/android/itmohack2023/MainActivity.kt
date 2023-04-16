@@ -84,7 +84,8 @@ class MainActivity : AppCompatActivity() {
 
 
         val dbSheduleSaver = DbSheduleSaver (this)
-        dbSheduleSaver.sendPostRequest();
+        //dbSheduleSaver.sendPostRequest();
+        dbSheduleSaver.postOkRequest();
 
     }
 
