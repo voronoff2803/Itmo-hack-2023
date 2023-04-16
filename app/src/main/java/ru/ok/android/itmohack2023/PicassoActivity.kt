@@ -3,11 +3,7 @@ package ru.ok.android.itmohack2023
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.squareup.picasso.OkHttp3Downloader
-import com.squareup.picasso.Picasso
-import okhttp3.OkHttpClient
-import ru.ok.android.itmohack2023.pixels.OkHttpInterceptor
+import ru.ok.android.itmohack2023.pixels.picasso.PicassoClientProvider
 
 class PicassoActivity : AppCompatActivity() {
     private lateinit var dog1: ImageView
@@ -31,13 +27,7 @@ class PicassoActivity : AppCompatActivity() {
     }
 
     private fun bindImages() {
-        val client = OkHttpClient.Builder()
-            .addInterceptor(OkHttpInterceptor())
-            .build()
-
-        val picasso = Picasso.Builder(this)
-            .downloader(OkHttp3Downloader(client))
-            .build()
+        val picasso = PicassoClientProvider().getClient(this)
 
         picasso.load(URLS[(0 until size).random()]).placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog1)
         picasso.load(URLS[(0 until size).random()]).placeholder(getDrawable(R.drawable.ico_dog)!!).into(dog2)
