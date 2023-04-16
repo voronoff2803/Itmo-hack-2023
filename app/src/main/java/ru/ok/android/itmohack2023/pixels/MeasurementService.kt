@@ -1,6 +1,9 @@
 package ru.ok.android.itmohack2023.pixels
 
+import android.content.Context
 import java.util.UUID
+import android.provider.Settings
+
 
 
 //val androidId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
@@ -32,4 +35,11 @@ object MeasurementService {
         val elapsedTime = (endTime - startTime).toInt()
         return elapsedTime
     }
+
+    fun getDeviceId(context: Context): String {
+        val androidId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
+        return androidId
+    }
+
+
 }

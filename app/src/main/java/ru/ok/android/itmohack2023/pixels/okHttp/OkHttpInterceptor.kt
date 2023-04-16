@@ -46,7 +46,8 @@ class OkHttpInterceptor : Interceptor {
 //        val app = ApplicationId()
 //        val androidId = app.getAndroidId()
 
-        val modelInstance = DbModel(userID = "367376",
+        val modelInstance = DbModel(
+            userID = DbSingletone.userId,
             path = request.url.toString(),
             type = request.method,
             requestSize = requestBody.toString().length.toString(),
@@ -55,6 +56,7 @@ class OkHttpInterceptor : Interceptor {
             statusCode = response.code.toString(),
             responseSize = responseBody.toString().length.toString()
         )
+
         val tmpDb = DbManager (DbSingletone.context)
         tmpDb.openDb()
         tmpDb.insertToDb(modelInstance)
