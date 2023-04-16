@@ -23,12 +23,12 @@ class DbManager(context: Context) {
 
         val values = ContentValues().apply {
             put(DbNameClass.COLUMN_NAME_USERID, dbModel.userID)
-            put(DbNameClass.COLUMN_NAME_TIME, "time1")
+            put(DbNameClass.COLUMN_NAME_TIME, dbModel.time)
             put(DbNameClass.COLUMN_NAME_CLIENT, dbModel.client)
             put(DbNameClass.COLUMN_NAME_PATH, dbModel.path)
             put(DbNameClass.COLUMN_NAME_HEADERS, dbModel.headers)
             put(DbNameClass.COLUMN_NAME_TYPE, dbModel.type)
-            put(DbNameClass.COLUMN_NAME_REQUESTTIME, "time2")
+            put(DbNameClass.COLUMN_NAME_REQUESTTIME, dbModel.requestTime)
             put(DbNameClass.COLUMN_NAME_REQUESTSIZE, dbModel.requestSize)
             put(DbNameClass.COLUMN_NAME_RESPONSESIZE, dbModel.responseSize)
             put(DbNameClass.COLUMN_NAME_STATUSCODE, dbModel.statusCode)
