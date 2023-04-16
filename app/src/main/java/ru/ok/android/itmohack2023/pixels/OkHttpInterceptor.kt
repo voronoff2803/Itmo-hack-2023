@@ -52,6 +52,7 @@ class OkHttpInterceptor : Interceptor {
             responseSize = responseBody.toString().length.toString()
         )
         val tmpDb = DbManager (DbSingletone.context)
+        tmpDb.openDb()
         tmpDb.insertToDb(modelInstance)
         return response
     }
