@@ -6,15 +6,15 @@ import java.util.Date
 
 class DbModel(
     val userID: String,
-    val time: LocalDate,
+    val time: String,
     val client: String,
     val path: String,
     val headers: String,
     val type: String,
-    val requestTime: LocalDate,
-    val requestSize: Int,
-    val responseSize: Int,
-    val statusCode: Int,
+    val requestTime: String,
+    val requestSize: String,
+    val responseSize: String,
+    val statusCode: String,
     val methodName: String,
     val className: String,
     val other: String

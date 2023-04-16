@@ -6,8 +6,8 @@ import ru.ok.android.itmohack2023.db.DbManager
 
 class JsonParser {
     fun JSONArrayFromDbModelArray(dbManager: DbManager) : JSONArray {
-        var originList = dbManager.readDbDataToDbModelList();
         val jsonArray = JSONArray()
+        var originList = dbManager.readDbDataToDbModelList();
         for (dbm in originList){
             val jsonA = JSONObject()
             jsonA.put("userId", dbm.userID)
