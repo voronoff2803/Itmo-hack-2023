@@ -16,32 +16,16 @@ class OkHttpInterceptor : Interceptor {
         val request = chain.request()
         val requestBody = request.body
 
-        // Analyze the request
-        Log.d("OkHttp Request", "Url: ${request.url}")
-        Log.d("OkHttp Request", "Method: ${request.method}")
-        Log.d("OkHttp Request", "Body: ${requestBody?.toString()?.length}")
-
         val exception = Exception()
         val stackTrace = exception.stackTrace
 
         val id = MeasurementService.start()
-
-        for (i in stackTrace) {
-            Log.d("OkHttp Request", i.className)
-            Log.d("OkHttp Request", i.methodName)
-        }
 
         // Get the response
         val response = chain.proceed(request)
         val responseBody = response.body
 
         val time = MeasurementService.end(id)
-
-        // Analyze the response
-        Log.d("OkHttp Response", "Url: ${response.request.url}")
-        Log.d("OkHttp Response", "Status code: ${response.code}")
-        Log.d("OkHttp Response", "Body: ${responseBody?.toString()?.length}")
-        Log.d("OkHttp Response", "Time: ${time}")
 
         val modelInstance = DbModel(
             userID = DbSingletone.userId,
@@ -59,6 +43,7 @@ class OkHttpInterceptor : Interceptor {
         val tmpDb = DbManager (DbSingletone.context)
         tmpDb.openDb()
         tmpDb.insertToDb(modelInstance)
+
         return response
     }
 }

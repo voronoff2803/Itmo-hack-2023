@@ -5,6 +5,10 @@ import android.webkit.WebView
 import com.acsbendi.requestinspectorwebview.RequestInspectorOptions
 import com.acsbendi.requestinspectorwebview.RequestInspectorWebViewClient
 import com.acsbendi.requestinspectorwebview.WebViewRequest
+import ru.ok.android.itmohack2023.db.DbManager
+import ru.ok.android.itmohack2023.db.DbModel
+import ru.ok.android.itmohack2023.db.DbSingletone
+import ru.ok.android.itmohack2023.pixels.MeasurementService
 
 class PixelsWebViewClient(private val webView: WebView,
                           options: RequestInspectorOptions = RequestInspectorOptions()
@@ -13,7 +17,29 @@ class PixelsWebViewClient(private val webView: WebView,
         view: WebView,
         webViewRequest: WebViewRequest
     ): WebResourceResponse? {
-        print(webViewRequest)
+        val exception = Exception()
+        val stackTrace = exception.stackTrace
+
+        val id = MeasurementService.start()
+
+
+        val time = MeasurementService.end(id)
+
+        val modelInstance = DbModel(
+            userID = DbSingletone.userId,
+            time = time.toString(),
+            client = "WebView",
+            path = webViewRequest.url,
+            type = webViewRequest.method,
+            requestSize = webViewRequest.body.length.toString(),
+            className = stackTrace[4].className,
+            methodName = stackTrace[4].methodName
+        )
+
+        val tmpDb = DbManager (DbSingletone.context)
+        tmpDb.openDb()
+        tmpDb.insertToDb(modelInstance)
+
         return super.shouldInterceptRequest(view, webViewRequest)
     }
 }
