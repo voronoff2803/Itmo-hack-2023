@@ -19,7 +19,7 @@ class DbManager(context: Context) {
 
     fun insertToDb (dbModel: DbModel){
 
-        val tm = dbModel
+
 
         val values = ContentValues().apply {
             put(DbNameClass.COLUMN_NAME_USERID, dbModel.userID)
@@ -65,10 +65,13 @@ class DbManager(context: Context) {
 
 
         while (cursor?.moveToNext()!!){
-
+            val id = cursor.getString( cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID));
+            val n = 0;
             val newDbModel = DbModel(
-                userID = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_TIME)).toString(),
-                time = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_REQUESTTIME)).toString(),
+                //String id = cursor.getString( cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID));
+
+                userID = cursor.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_USERID)),
+                time = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_TIME)).toString(),
                 client = cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_CLIENT)).toString(),
                 path =  cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_PATH)).toString(),
                 headers =  cursor?.getString(cursor.getColumnIndex(DbNameClass.COLUMN_NAME_HEADERS)).toString(),

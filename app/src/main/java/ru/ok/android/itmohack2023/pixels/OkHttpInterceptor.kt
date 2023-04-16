@@ -39,15 +39,15 @@ class OkHttpInterceptor : Interceptor {
         Log.d("OkHttp Response", "Status code: ${response.code}")
         Log.d("OkHttp ResponseWWW", "Body: ${responseBody?.toString()?.length}")
 
-        val app = ApplicationId()
+//        val app = ApplicationId()
 //        val androidId = app.getAndroidId()
 
         val modelInstance = DbModel(userID = "367376",
             path = request.url.toString(),
             type = request.method,
             requestSize = requestBody.toString().length.toString(),
-            className = stackTrace[3].className,
-            methodName = stackTrace[3].methodName,
+            className = stackTrace[4].className,
+            methodName = stackTrace[4].methodName,
             statusCode = response.code.toString(),
             responseSize = responseBody.toString().length.toString()
         )
