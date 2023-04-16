@@ -8,6 +8,7 @@ import ru.ok.android.itmohack2023.db.DbManager
 import ru.ok.android.itmohack2023.db.DbModel
 import ru.ok.android.itmohack2023.db.DbSingletone
 import ru.ok.android.itmohack2023.pixels.MeasurementService
+import java.io.BufferedReader
 
 class OkHttpInterceptor : Interceptor {
 
@@ -19,6 +20,8 @@ class OkHttpInterceptor : Interceptor {
         val stackTrace = exception.stackTrace
 
         val id = MeasurementService.start()
+
+        lateinit var logReader: BufferedReader
 
         val response = chain.proceed(request)
         val responseBody = response.body
